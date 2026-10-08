@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "369206001228",
+    "project_id": "mundo-peliculas-14ffc",
+    "storage_bucket": "mundo-peliculas-14ffc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369206001228:android:3b2b1e63a64a6be8f03ee9",
+        "android_client_info": {
+          "package_name": "com.example.mundopeliculas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk0I20QXQOs_o9AT0Uld5nKwsv90ulnyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
