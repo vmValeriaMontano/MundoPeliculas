@@ -24,4 +24,9 @@
     <string name="btnRegister">Registrarme</string>
     <string name="tvLoginLink">¿Ya tienes cuenta? Inicia sesión</string>
 
+    <!--Textos PERFIL-->
+    <string name="btnLogout">Cerrar sesión</string>
+    <string name="tvProfileName">Cargando...</string>
+    <string name="tvProfileEmail">correo@ejemplo.com</string>
+
 </resources>
