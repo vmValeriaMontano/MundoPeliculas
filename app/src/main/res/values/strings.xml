@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Mundo Peliculas</string>
+
+    <!--Textos SPLASH-->
+    <string name="tvTitle">MUNDO\nPELÍCULAS</string>
+    <string name="tvSubtitle">Tú mundo, miles de historias</string>
+
+    <!--Textos LOGIN-->
+    <string name="tvHeaderTitle">Bienvenido de nuevo</string>
+    <string name="tvHeaderSubtitle">Inicia sesión para continuar</string>
+    <string name="btnLogin">Iniciar Sesión</string>
+    <string name="tvRegister">¿No tienes cuenta? Crear Cuenta</string>
+
+
+    <!--Textos Correos y contraseñas-->
+    <string name="correo">Correo electrónico</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="confirmPassword">Confirmar contraseña</string>
+
+    <!--Textos REGISTRO-->
+    <string name="tvRegTitle">Crear tu cuenta</string>
+    <string name="tvRegSubtitle">Únete a mundo películas</string>
+    <string name="etFullName">Nombre completo</string>
+    <string name="btnRegister">Registrarme</string>
+    <string name="tvLoginLink">¿Ya tienes cuenta? Inicia sesión</string>
+
 </resources>
