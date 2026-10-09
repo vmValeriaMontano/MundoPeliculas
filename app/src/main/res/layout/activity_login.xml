@@ -5,22 +5,34 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09111E"
+    android:background="@drawable/fondo_principal"
     android:padding="24dp"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLoginLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/logo_redondo_m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvHeaderTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:text="Bienvenido de nuevo"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLoginLogo" />
 
     <TextView
         android:id="@+id/tvHeaderSubtitle"
@@ -28,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Inicia sesión para continuar"
+        android:textAlignment="center"
         android:textColor="#8A99AD"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,13 +51,13 @@
         android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:background="#162235"
+        android:layout_marginTop="32dp"
+        android:background="#1A162235"
         android:hint="Correo electrónico"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="16dp"
         android:textColor="#FFFFFF"
-        android:textColorHint="#5B6B7C"
+        android:textColorHint="#8A99AD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHeaderSubtitle" />
@@ -54,12 +67,12 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:background="#162235"
+        android:background="#1A162235"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:paddingHorizontal="16dp"
         android:textColor="#FFFFFF"
-        android:textColorHint="#5B6B7C"
+        android:textColorHint="#8A99AD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
@@ -83,7 +96,7 @@
         android:layout_marginBottom="24dp"
         android:padding="8dp"
         android:text="¿No tienes cuenta? Crear Cuenta"
-        android:textColor="#D81B60"
+        android:textColor="#E91E63"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
