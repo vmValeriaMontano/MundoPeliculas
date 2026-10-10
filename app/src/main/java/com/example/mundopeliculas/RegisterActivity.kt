@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
@@ -11,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
-
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -30,7 +30,14 @@ class RegisterActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val etConfirmPassword = findViewById<EditText>(R.id.etConfirmPassword)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
+        val tvLoginLink = findViewById<TextView>(R.id.tvLoginLink)
 
+        // Evento para volver a la pantalla de Login
+        tvLoginLink.setOnClickListener {
+            finish() // Cierra RegisterActivity y regresa a la actividad anterior (LoginActivity)
+        }
+
+        // Lógica de registro con Firebase
         btnRegister.setOnClickListener {
             val name = etName.text.toString().trim()
             val email = etEmail.text.toString().trim()
