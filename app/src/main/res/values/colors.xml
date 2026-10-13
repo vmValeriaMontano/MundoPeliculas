@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="vino_oscuro">#2D0B0B</color>
+    <color name="dark_blue_bg">#0A0D14</color>
+    <color name="search_bar_bg">#1B212D</color>
+    <color name="accent_blue">#3D5AFE</color>
+    <color name="gray_text">#A0AAB8</color>
+    <color name="gold">#FFC107</color>
+    <color name="heart_red">#FF5252</color>
+    <color name="item_bg_blue">#131824</color>
+    <color name="chip_bg_color">#B56A8F</color>
+    <color name="bright_blue">#00E5FF</color>
 </resources>

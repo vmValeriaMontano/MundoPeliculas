@@ -45,12 +45,12 @@ class RegisterActivity : AppCompatActivity() {
             val confirmPassword = etConfirmPassword.text.toString().trim()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_empty_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (password != confirmPassword) {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_password_mismatch), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -69,13 +69,14 @@ class RegisterActivity : AppCompatActivity() {
                         if (userId != null) {
                             db.collection("users").document(userId).set(userMap)
                                 .addOnSuccessListener {
-                                    Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
                                     startActivity(Intent(this, MainActivity::class.java))
-                                    finishAffinity() // Cierra la pila de actividades anteriores
+                                    finishAffinity()
                                 }
                         }
                     } else {
-                        Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        val errorMessage = task.exception?.message ?: getString(R.string.error_generic)
+                        Toast.makeText(this, getString(R.string.error_prefix, errorMessage), Toast.LENGTH_LONG).show()
                     }
                 }
         }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="160dp"
-    android:layout_height="280dp"
+    android:layout_height="300dp"
     android:layout_marginEnd="12dp"
     app:cardBackgroundColor="#0F1621"
     app:cardCornerRadius="14dp"
@@ -26,10 +27,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:contentDescription="Póster" />
+                android:contentDescription="@null"
+                tools:src="@android:color/darker_gray" />
         </androidx.cardview.widget.CardView>
 
-        <!-- Rank Badge -->
         <TextView
             android:id="@+id/tvMovieRank"
             android:layout_width="26dp"
@@ -37,12 +38,12 @@
             android:layout_margin="6dp"
             android:background="@drawable/bg_rank_badge"
             android:gravity="center"
-            android:text="1"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/cvPoster"
-            app:layout_constraintTop_toTopOf="@+id/cvPoster" />
+            app:layout_constraintTop_toTopOf="@+id/cvPoster"
+            tools:text="1" />
 
         <TextView
             android:id="@+id/tvMovieTitleLabel"
@@ -52,13 +53,13 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvPoster" />
+            app:layout_constraintTop_toBottomOf="@id/cvPoster"
+            tools:text="Movie Title" />
 
-        <!-- Genre Badge -->
         <TextView
             android:id="@+id/tvMovieGenre"
             android:layout_width="wrap_content"
@@ -67,42 +68,39 @@
             android:background="@drawable/bg_genre_tag"
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
-            android:text="Acción"
-            android:textColor="#B0BEC5"
-            android:textSize="11sp"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieTitleLabel" />
+            app:layout_constraintTop_toBottomOf="@id/tvMovieTitleLabel"
+            tools:text="Genre" />
 
-        <!-- Star Rating -->
+        <!-- 5 Stars Container -->
         <LinearLayout
-            android:id="@+id/layoutRatingSmall"
+            android:id="@+id/layoutStars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvMovieGenre">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⭐"
-                android:textColor="#FFD700"
-                android:textSize="12sp" />
+            <ImageView android:id="@+id/star1" android:layout_width="12dp" android:layout_height="12dp" android:src="@android:drawable/btn_star_big_off" />
+            <ImageView android:id="@+id/star2" android:layout_width="12dp" android:layout_height="12dp" android:src="@android:drawable/btn_star_big_off" />
+            <ImageView android:id="@+id/star3" android:layout_width="12dp" android:layout_height="12dp" android:src="@android:drawable/btn_star_big_off" />
+            <ImageView android:id="@+id/star4" android:layout_width="12dp" android:layout_height="12dp" android:src="@android:drawable/btn_star_big_off" />
+            <ImageView android:id="@+id/star5" android:layout_width="12dp" android:layout_height="12dp" android:src="@android:drawable/btn_star_big_off" />
 
             <TextView
                 android:id="@+id/tvMovieRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="8.7"
+                android:layout_marginStart="6dp"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:text="8.5" />
         </LinearLayout>
 
-        <!-- Progress Indicator -->
         <View
             android:id="@+id/viewMovieProgressBg"
             android:layout_width="match_parent"
@@ -113,7 +111,7 @@
 
         <View
             android:id="@+id/viewMovieProgressFill"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="3dp"
             android:background="#FF00FF"
             app:layout_constraintBottom_toBottomOf="parent"

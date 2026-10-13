@@ -1,32 +1,106 @@
 <resources>
     <string name="app_name">Mundo Peliculas</string>
 
-    <!--Textos SPLASH-->
+    <!-- Textos SPLASH -->
     <string name="tvTitle">MUNDO\nPELÍCULAS</string>
     <string name="tvSubtitle">Tú mundo, miles de historias</string>
 
-    <!--Textos LOGIN-->
+    <!-- Textos LOGIN -->
     <string name="tvHeaderTitle">Bienvenido de nuevo</string>
     <string name="tvHeaderSubtitle">Inicia sesión para continuar</string>
     <string name="btnLogin">Iniciar Sesión</string>
     <string name="tvRegister">¿No tienes cuenta? Crear Cuenta</string>
 
-
-    <!--Textos Correos y contraseñas-->
+    <!-- Textos Correos y contraseñas -->
     <string name="correo">Correo electrónico</string>
     <string name="contrasenia">Contraseña</string>
     <string name="confirmPassword">Confirmar contraseña</string>
 
-    <!--Textos REGISTRO-->
+    <!-- Textos REGISTRO -->
     <string name="tvRegTitle">Crear tu cuenta</string>
     <string name="tvRegSubtitle">Únete a mundo películas</string>
     <string name="etFullName">Nombre completo</string>
     <string name="btnRegister">Registrarme</string>
     <string name="tvLoginLink">¿Ya tienes cuenta? Inicia sesión</string>
 
-    <!--Textos PERFIL-->
-    <string name="btnLogout">Cerrar sesión</string>
+    <!-- Textos PERFIL -->
+    <string name="title_profile">Mi perfil</string>
+    <string name="favorites">Favoritos</string>
+    <string name="views">Vistas</string>
+    <string name="lists">Listas</string>
+    <string name="my_account">MI CUENTA</string>
+    <string name="my_activity">Mi actividad</string>
+    <string name="my_favorites">Mis favoritos</string>
+    <string name="btn_logout">Cerrar sesión</string>
     <string name="tvProfileName">Cargando...</string>
     <string name="tvProfileEmail">correo@ejemplo.com</string>
 
+    <!-- Textos HOME -->
+    <string name="welcome">Bienvenido</string>
+    <string name="trending">En tendencia</string>
+    <string name="popular">Populares</string>
+    <string name="view_all">ver todo ></string>
+
+    <!-- Textos SEARCH -->
+    <string name="search_title">Buscar películas</string>
+    <string name="search_hint">Buscar películas...</string>
+    <string name="search_enter_title">Escribe el título de una película</string>
+    <string name="search_status_initial">Películas Populares</string>
+    <string name="search_loading">Buscando...</string>
+    <string name="search_no_results">No se encontraron resultados</string>
+    <string name="search_error">Error al buscar películas</string>
+    <string name="search_poster_description">Poster de la película</string>
+    <string name="search_movie_title_placeholder">Título de la película</string>
+    <string name="filter_description">Filtros</string>
+    <string name="go_to_details">Ir a detalles</string>
+    <string name="search_recent_title">Búsquedas recientes</string>
+    <string name="search_results_for">Resultados para \"%1$s\"</string>
+
+    <!-- Textos ITEMS -->
+    <string name="watch_trailer">VER TRÁILER</string>
+
+    <!-- Textos TOP BAR -->
+    <string name="main_title">MUNDO PELÍCULAS</string>
+    <string name="notifications">Notificaciones</string>
+
+    <!-- Textos MENU -->
+    <string name="menu_home">Inicio</string>
+    <string name="menu_search">Buscar</string>
+    <string name="menu_favorites">Favoritos</string>
+    <string name="menu_profile">Perfil</string>
+
+    <!-- Mensajes de Error y Éxito -->
+    <string name="error_load_movies">No se pudieron cargar las películas. Revisa Internet.</string>
+    <string name="error_trailer">Tráiler no disponible</string>
+    <string name="error_generic">Ocurrió un error inesperado</string>
+    <string name="error_empty_fields">Por favor llena todos los campos</string>
+    <string name="error_password_mismatch">Las contraseñas no coinciden</string>
+    <string name="login_success">¡Bienvenido!</string>
+    <string name="register_success">Registro exitoso</string>
+    <string name="error_prefix">Error: %1$s</string>
+    <string name="movie_info_format">%1$s • %2$s</string>
+    <string name="genre_action_adventure">Acción, Aventura</string>
+
+    <!-- Notificaciones Strings -->
+    <string name="notifications_cleared">Notificaciones vaciadas</string>
+    <string name="notification_fav_added_title">Nuevo Favorito</string>
+    <string name="notification_fav_added_msg">Añadiste «%1$s» a tus favoritos</string>
+    <string name="notification_fav_removed_title">Favorito eliminado</string>
+    <string name="notification_fav_removed_msg">Quitaste «%1$s» de tus favoritos</string>
+    <string name="fav_added_toast">%1$s añadido a favoritos</string>
+    <string name="fav_removed_toast">%1$s eliminado de favoritos</string>
+    <string name="clear_all">Limpiar</string>
+    <string name="empty_favorites">Aún no tienes películas favoritas</string>
+    <string name="notifications_title">Notificaciones</string>
+
+    <string-array name="splash_phrases">
+        <item>Preparando las palomitas…</item>
+        <item>Buscando las mejores historias…</item>
+        <item>Tu cine personal está listo.</item>
+        <item>Cargando emociones…</item>
+        <item>Todo listo para la acción.</item>
+        <item>Luces, cámara, ¡acción!</item>
+        <item>Explora nuevos mundos.</item>
+        <item>Tus películas favoritas te esperan.</item>
+    </string-array>
 </resources>

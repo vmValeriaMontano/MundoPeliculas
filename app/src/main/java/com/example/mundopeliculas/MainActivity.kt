@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.mundopeliculas.ui.home.HomeFragment
+import com.example.mundopeliculas.ui.search.SearchFragment
+import com.example.mundopeliculas.ui.notifications.NotificationsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +19,28 @@ class MainActivity : AppCompatActivity() {
         val bottomNav =
             findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
+        val targetFragment = intent.getStringExtra("TARGET_FRAGMENT")
+
         if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                replace(R.id.fragmentContainer, HomeFragment())
+            when (targetFragment) {
+                "SEARCH" -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fragmentContainer, SearchFragment())
+                    }
+                    bottomNav.selectedItemId = R.id.nav_search
+                }
+                "NOTIFICATIONS" -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fragmentContainer, NotificationsFragment())
+                    }
+                    // No cambiamos el item de bottomNav porque notificaciones no está ahí
+                }
+                else -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fragmentContainer, HomeFragment())
+                    }
+                    bottomNav.selectedItemId = R.id.nav_home
+                }
             }
         }
 
@@ -33,21 +54,17 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_search -> {
-                    Toast.makeText(
-                        this,
-                        "La pantalla de búsqueda la conectaremos después",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    false
+                    supportFragmentManager.commit {
+                        replace(R.id.fragmentContainer, SearchFragment())
+                    }
+                    true
                 }
 
                 R.id.nav_favorites -> {
-                    Toast.makeText(
-                        this,
-                        "Favoritos está pendiente de conectar",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    false
+                    supportFragmentManager.commit {
+                        replace(R.id.fragmentContainer, com.example.mundopeliculas.ui.favorites.FavoritesFragment())
+                    }
+                    true
                 }
 
                 R.id.nav_profile -> {
@@ -61,6 +78,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        bottomNav.selectedItemId = R.id.nav_home
+        // bottomNav.selectedItemId = R.id.nav_home // Eliminado para no sobreescribir la lógica superior
     }
 }

@@ -3,20 +3,20 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@android:drawable/ic_menu_compass"
-        android:title="Inicio" />
+        android:title="@string/menu_home" />
 
     <item
         android:id="@+id/nav_search"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Buscar" />
+        android:title="@string/menu_search" />
 
     <item
         android:id="@+id/nav_favorites"
         android:icon="@android:drawable/btn_star_big_on"
-        android:title="Favoritos" />
+        android:title="@string/menu_favorites" />
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@android:drawable/ic_menu_myplaces"
-        android:title="Perfil" />
+        android:title="@string/menu_profile" />
 </menu>

@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:paddingBottom="100dp">
 
-        <!-- Barra Superior Reutilizada (Mismo que Perfil) -->
         <include
             android:id="@+id/includeTopBar"
             layout="@layout/top_bar"
@@ -26,17 +25,18 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:text="Bienvenido"
+            android:text="@string/welcome"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingHorizontal="20dp"
-            android:text="¿Qué quieres ver hoy?\nDescubre algo que te encantará."
+            android:text="@string/tvSubtitle"
             android:textColor="#A0AAB8"
             android:textSize="14sp" />
 
@@ -45,12 +45,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:paddingHorizontal="20dp"
-            android:text="En tendencia"
+            android:text="@string/trending"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Carrusel Principal -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vpTrending"
             android:layout_width="match_parent"
@@ -60,7 +59,6 @@
             android:clipToPadding="false"
             android:clipChildren="false" />
 
-        <!-- Indicadores del Carrusel (Dots) -->
         <LinearLayout
             android:id="@+id/layoutDots"
             android:layout_width="match_parent"
@@ -69,7 +67,6 @@
             android:layout_marginTop="8dp"
             android:orientation="horizontal" />
 
-        <!-- Fila Populares con fondo azul igual a la top_bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,21 +81,23 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Populares"
+                android:text="@string/popular"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvViewAllPopular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ver todo >"
+                android:text="@string/view_all"
                 android:textColor="#FF00FF"
                 android:textStyle="bold"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true" />
         </LinearLayout>
 
-        <!-- Lista de Populares -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPopular"
             android:layout_width="match_parent"

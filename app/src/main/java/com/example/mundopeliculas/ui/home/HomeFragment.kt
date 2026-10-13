@@ -80,6 +80,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+
+        // Configurar clic en "Ver todo" para ir a Búsqueda
+        view.findViewById<TextView>(R.id.tvViewAllPopular).setOnClickListener {
+            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottomNavigation)
+            bottomNav.selectedItemId = R.id.nav_search
+        }
+
+        // Configurar clic en Notificaciones
+        view.findViewById<ImageView>(R.id.btnNotification).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, com.example.mundopeliculas.ui.notifications.NotificationsFragment())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     private fun setupDots(count: Int) {

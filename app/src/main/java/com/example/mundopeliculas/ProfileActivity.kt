@@ -30,6 +30,14 @@ class ProfileActivity : AppCompatActivity() {
         val tvEmail = findViewById<TextView>(R.id.tvProfileEmail)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        val btnNotification = findViewById<android.widget.ImageView>(R.id.btnNotification)
+
+        btnNotification.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java).apply {
+                putExtra("TARGET_FRAGMENT", "NOTIFICATIONS")
+            })
+            finish()
+        }
 
         // Marcar la opción "Perfil" como seleccionada en esta Activity
         bottomNav.selectedItemId = R.id.nav_profile
@@ -38,7 +46,16 @@ class ProfileActivity : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java).apply {
+                        putExtra("TARGET_FRAGMENT", "HOME")
+                    })
+                    finish()
+                    true
+                }
+                R.id.nav_search -> {
+                    startActivity(Intent(this, MainActivity::class.java).apply {
+                        putExtra("TARGET_FRAGMENT", "SEARCH")
+                    })
                     finish()
                     true
                 }
