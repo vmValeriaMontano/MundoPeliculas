@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="280dp"
+    android:layout_marginEnd="12dp"
+    app:cardBackgroundColor="#0F1621"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPoster"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Póster" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Rank Badge -->
+        <TextView
+            android:id="@+id/tvMovieRank"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_rank_badge"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cvPoster"
+            app:layout_constraintTop_toTopOf="@+id/cvPoster" />
+
+        <TextView
+            android:id="@+id/tvMovieTitleLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvPoster" />
+
+        <!-- Genre Badge -->
+        <TextView
+            android:id="@+id/tvMovieGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_genre_tag"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="Acción"
+            android:textColor="#B0BEC5"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieTitleLabel" />
+
+        <!-- Star Rating -->
+        <LinearLayout
+            android:id="@+id/layoutRatingSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieGenre">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⭐"
+                android:textColor="#FFD700"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvMovieRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="8.7"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Progress Indicator -->
+        <View
+            android:id="@+id/viewMovieProgressBg"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="12dp"
+            android:background="#33FF00FF"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <View
+            android:id="@+id/viewMovieProgressFill"
+            android:layout_width="50dp"
+            android:layout_height="3dp"
+            android:background="#FF00FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

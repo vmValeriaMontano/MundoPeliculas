@@ -5,43 +5,26 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_principal"
+    android:background="@drawable/fondo_vino"
     tools:context=".MainActivity">
 
-    <!-- 1. BARRA SUPERIOR REUTILIZABLE -->
-    <include
-        android:id="@+id/includeTopBar"
-        layout="@layout/top_bar"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- 2. CONTENIDO PRINCIPAL (Aquí catálogo/carrusel de películas) -->
-    <TextView
-        android:id="@+id/tvHomePlaceholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pantalla de Inicio (Catálogo)"
-        android:textColor="#A0AAB8"
-        android:textSize="18sp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/includeTopBar" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 3. BARRA INFERIOR DE NAVEGACIÓN -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#162235"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#8A99AD"
         app:menu="@menu/bottom_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
