@@ -5,9 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.mundopeliculas"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.mundopeliculas"
@@ -56,6 +54,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // NUEVO: Dependencia obligatoria para Google Sign-In en Firebase
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 
     // API de películas: TMDB
     implementation("com.squareup.retrofit2:retrofit:2.11.0")

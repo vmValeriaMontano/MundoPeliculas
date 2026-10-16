@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/ivRegLogo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="16dp"
         android:contentDescription="Logo"
         android:src="@drawable/logo_redondo_m"
@@ -24,11 +24,11 @@
         android:id="@+id/tvRegTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/tvRegTitle"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
         android:text="@string/tvRegSubtitle"
         android:textAlignment="center"
         android:textColor="#8A99AD"
-        android:textSize="14sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRegTitle" />
@@ -50,8 +50,8 @@
     <EditText
         android:id="@+id/etFullName"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:background="#1A162235"
         android:hint="@string/etFullName"
         android:inputType="textPersonName"
@@ -65,8 +65,8 @@
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
         android:background="#1A162235"
         android:hint="@string/correo"
         android:inputType="textEmailAddress"
@@ -80,8 +80,8 @@
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
         android:background="#1A162235"
         android:hint="@string/contrasenia"
         android:inputType="textPassword"
@@ -95,8 +95,8 @@
     <EditText
         android:id="@+id/etConfirmPassword"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
         android:background="#1A162235"
         android:hint="@string/confirmPassword"
         android:inputType="textPassword"
@@ -107,24 +107,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
+    <!-- Botón de Registro Normal (Va debajo de Confirmar Contraseña) -->
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:text="@string/btnRegister"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
+
+    <Button
+        android:id="@+id/btnGoogleRegister"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/btnGoogleRegister"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
     <TextView
         android:id="@+id/tvLoginLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"
+        android:layout_marginBottom="12dp"
+        android:padding="6dp"
         android:text="@string/tvLoginLink"
         android:textColor="#E91E63"
         android:textSize="14sp"

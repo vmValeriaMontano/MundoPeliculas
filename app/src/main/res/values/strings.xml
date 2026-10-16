@@ -10,6 +10,7 @@
     <string name="tvHeaderSubtitle">Inicia sesión para continuar</string>
     <string name="btnLogin">Iniciar Sesión</string>
     <string name="tvRegister">¿No tienes cuenta? Crear Cuenta</string>
+    <string name="btnGoogleLogin">Iniciar sesión con Google</string>
 
     <!-- Textos Correos y contraseñas -->
     <string name="correo">Correo electrónico</string>
@@ -22,6 +23,7 @@
     <string name="etFullName">Nombre completo</string>
     <string name="btnRegister">Registrarme</string>
     <string name="tvLoginLink">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="btnGoogleRegister">Registrarse con Google</string>
 
     <!-- Textos PERFIL -->
     <string name="title_profile">Mi perfil</string>
