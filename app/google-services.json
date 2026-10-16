@@ -12,7 +12,20 @@
           "package_name": "com.example.mundopeliculas"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "369206001228-d0poqbtlpgavdi6eammp6uqmnv2mgjlm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mundopeliculas",
+            "certificate_hash": "52b1bc7add90d41813dcae5d870d9ac2e502d406"
+          }
+        },
+        {
+          "client_id": "369206001228-r5ri42fdgce34p7jr1vnkkb6n49av9b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBk0I20QXQOs_o9AT0Uld5nKwsv90ulnyU"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369206001228-r5ri42fdgce34p7jr1vnkkb6n49av9b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
