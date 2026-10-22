@@ -16,6 +16,8 @@ import com.example.mundopeliculas.R
 import com.example.mundopeliculas.data.FavoritesManager
 import com.example.mundopeliculas.data.Movie
 import com.example.mundopeliculas.data.RetrofitClient
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
@@ -86,13 +88,40 @@ class DetailActivity : AppCompatActivity() {
         // Estado inicial del botón de favoritos
         btnFavorite.isChecked = FavoritesManager.isFavorite(this, movieId)
 
+        // Lógica combinada: Mantiene tu FavoritesManager local y además guarda/borra en Firestore
         btnFavorite.setOnCheckedChangeListener { _, isChecked ->
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            val db = FirebaseFirestore.getInstance()
+
             if (isChecked) {
+                // 1. Guardado local
                 FavoritesManager.addFavorite(this, currentMovie)
                 Toast.makeText(this, "Añadido a favoritos", Toast.LENGTH_SHORT).show()
+
+                // 2. Guardar en Firestore
+                if (userId != null) {
+                    val movieMap = hashMapOf(
+                        "id" to movieId,
+                        "title" to movieTitle,
+                        "overview" to movieOverview,
+                        "posterPath" to moviePoster,
+                        "backdropPath" to movieBackdrop,
+                        "voteAverage" to movieRating,
+                        "releaseDate" to movieReleaseDate
+                    )
+                    db.collection("users").document(userId).collection("favorites").document(movieId.toString())
+                        .set(movieMap)
+                }
             } else {
+                // 1. Borrado local
                 FavoritesManager.removeFavorite(this, movieId)
                 Toast.makeText(this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show()
+
+                // 2. Borrar de Firestore
+                if (userId != null) {
+                    db.collection("users").document(userId).collection("favorites").document(movieId.toString())
+                        .delete()
+                }
             }
         }
 
