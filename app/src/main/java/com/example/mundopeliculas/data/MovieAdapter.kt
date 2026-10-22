@@ -76,8 +76,18 @@ class MovieAdapter(
             .centerCrop()
             .into(holder.poster)
 
+        //Detalles de la peli
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "Detalles de ${movie.title}", Toast.LENGTH_SHORT).show()
+            val intent = android.content.Intent(context, com.example.mundopeliculas.ui.details.DetailActivity::class.java).apply {
+                putExtra("MOVIE_ID", movie.id)
+                putExtra("MOVIE_TITLE", movie.title)
+                putExtra("MOVIE_OVERVIEW", movie.overview)
+                putExtra("MOVIE_POSTER", movie.posterPath)
+                putExtra("MOVIE_BACKDROP", movie.backdropPath)
+                putExtra("MOVIE_RATING", movie.voteAverage)
+                putExtra("MOVIE_RELEASE_DATE", movie.releaseDate)
+            }
+            context.startActivity(intent)
         }
     }
 
