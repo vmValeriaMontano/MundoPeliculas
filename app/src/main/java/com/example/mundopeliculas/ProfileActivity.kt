@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mundopeliculas.data.FavoritesManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -29,11 +30,18 @@ class ProfileActivity : AppCompatActivity() {
 
         val tvName = findViewById<TextView>(R.id.tvProfileName)
         val tvEmail = findViewById<TextView>(R.id.tvProfileEmail)
+        val tvStatFavorites = findViewById<TextView>(R.id.tvStatFavorites)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         val btnNotification = findViewById<android.widget.ImageView>(R.id.btnNotification)
-        val btnMyFavorites = findViewById<LinearLayout>(R.id.btnMyFavorites) // Botón de Mis Favoritos en la lista
+        val btnMyActivity = findViewById<LinearLayout>(R.id.btnMyActivity)
+        val btnMyFavorites = findViewById<LinearLayout>(R.id.btnMyFavorites)
 
+        // Actualizar contador de favoritos dinámicamente
+        val favoritesCount = FavoritesManager.getFavorites(this).size
+        tvStatFavorites.text = favoritesCount.toString()
+
+        // Abrir Notificaciones / Actividad
         btnNotification.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java).apply {
                 putExtra("TARGET_FRAGMENT", "NOTIFICATIONS")
@@ -41,7 +49,14 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Al presionar la opción "Mis favoritos" en la lista del perfil, nos lleva a la pestaña Favoritos
+        btnMyActivity?.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java).apply {
+                putExtra("TARGET_FRAGMENT", "NOTIFICATIONS")
+            })
+            finish()
+        }
+
+        // Ir a Favoritos
         btnMyFavorites?.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java).apply {
                 putExtra("TARGET_FRAGMENT", "FAVORITES")
@@ -52,7 +67,7 @@ class ProfileActivity : AppCompatActivity() {
         // Marcar la opción "Perfil" como seleccionada en esta Activity
         bottomNav.selectedItemId = R.id.nav_profile
 
-        // Configurar la navegación con Intent entre Activities
+        // Configurar la navegación inferior
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -69,7 +84,7 @@ class ProfileActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_favorites -> { // AHORA SÍ: Redirige a la pantalla de Favoritos
+                R.id.nav_favorites -> {
                     startActivity(Intent(this, MainActivity::class.java).apply {
                         putExtra("TARGET_FRAGMENT", "FAVORITES")
                     })

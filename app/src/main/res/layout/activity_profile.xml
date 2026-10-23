@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 2. CONTENIDO DESLIZABLE (SCROLL) PARA QUE ENTRE TODO EL MOCKUP -->
+    <!-- 2. CONTENIDO DESLIZABLE (SCROLL) -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -78,7 +78,7 @@
                 android:textColor="#A0AAB8"
                 android:textSize="13sp" />
 
-            <!-- TARJETA DE ESTADÍSTICAS (FAVORITAS / VISTAS / LISTAS) -->
+            <!-- TARJETA DE ESTADÍSTICAS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,6 +95,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/tvStatFavorites"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -174,10 +175,13 @@
 
             <!-- BOTÓN MI ACTIVIDAD -->
             <LinearLayout
+                android:id="@+id/btnMyActivity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="#162235"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp">
                 <TextView
