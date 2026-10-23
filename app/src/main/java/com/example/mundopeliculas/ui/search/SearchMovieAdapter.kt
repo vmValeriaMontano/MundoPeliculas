@@ -1,5 +1,7 @@
 package com.example.mundopeliculas.ui.search
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +14,12 @@ import com.bumptech.glide.Glide
 import com.example.mundopeliculas.R
 import com.example.mundopeliculas.data.FavoritesManager
 import com.example.mundopeliculas.data.Movie
+import com.example.mundopeliculas.data.RetrofitClient
+import com.example.mundopeliculas.data.ViewsManager
 import com.example.mundopeliculas.ui.notifications.NotificationsManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SearchMovieAdapter :
     RecyclerView.Adapter<SearchMovieAdapter.MovieViewHolder>() {
@@ -43,7 +50,7 @@ class SearchMovieAdapter :
         val movie = movies[position]
         val context = holder.itemView.context
         val isFav = FavoritesManager.isFavorite(context, movie.id)
-        
+
         holder.bind(movie, isFav) { updatedFav ->
             if (updatedFav) {
                 FavoritesManager.addFavorite(context, movie)
@@ -83,7 +90,7 @@ class SearchMovieAdapter :
         fun bind(movie: Movie, isFavorite: Boolean, onFavoriteToggle: (Boolean) -> Unit) {
             title.text = movie.title
             rating.text = String.format("%.1f", movie.voteAverage)
-            
+
             val year = movie.releaseDate?.split("-")?.firstOrNull() ?: "N/A"
             meta.text = "$year • Película"
 
@@ -108,12 +115,35 @@ class SearchMovieAdapter :
                 onFavoriteToggle(currentFavoriteState)
             }
 
-            val playAction = {
-                Toast.makeText(itemView.context, "Reproduciendo: ${movie.title}", Toast.LENGTH_SHORT).show()
+            // Acción del botón Reproducir (Registra la vista y abre el tráiler en YouTube)
+            btnPlay.setOnClickListener {
+                val context = itemView.context
+                ViewsManager.addView(context, movie)
+                Toast.makeText(context, "Reproduciendo: ${movie.title}", Toast.LENGTH_SHORT).show()
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    try {
+                        val response = RetrofitClient.api.getMovieVideos(movie.id, RetrofitClient.API_KEY)
+                        val video = response.results.firstOrNull {
+                            it.site.equals("YouTube", ignoreCase = true) &&
+                                    (it.type.equals("Trailer", ignoreCase = true) || it.type.equals("Teaser", ignoreCase = true))
+                        }
+
+                        if (video != null) {
+                            val url = "https://www.youtube.com/watch?v=${video.key}"
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            context.startActivity(intent)
+                        } else {
+                            Toast.makeText(context, "Tráiler no disponible", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(context, "Error al cargar tráiler", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
 
-            btnPlay.setOnClickListener { playAction() }
-            itemView.setOnClickListener { playAction() }
+            // Desactivamos el clic en la tarjeta completa para evitar conflictos o comportamientos extraños
+            itemView.setOnClickListener(null)
         }
 
         private fun updateFavoriteIcon(isFavorite: Boolean) {
