@@ -227,6 +227,32 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <!-- BOTÓN MI LISTA -->
+            <LinearLayout
+                android:id="@+id/btnMyList"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="#162235"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mi lista"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="#8A99AD"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
             <!-- BOTÓN CERRAR SESIÓN -->
             <Button
                 android:id="@+id/btnLogout"

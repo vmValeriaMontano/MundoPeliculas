@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mundopeliculas.data.FavoritesManager
 import com.example.mundopeliculas.data.ListsManager
 import com.example.mundopeliculas.data.ViewsManager
+import com.example.mundopeliculas.ui.list.ListActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -40,6 +41,7 @@ class ProfileActivity : AppCompatActivity() {
         val btnNotification = findViewById<android.widget.ImageView>(R.id.btnNotification)
         val btnMyActivity = findViewById<LinearLayout>(R.id.btnMyActivity)
         val btnMyFavorites = findViewById<LinearLayout>(R.id.btnMyFavorites)
+        val btnMyList = findViewById<LinearLayout>(R.id.btnMyList)
 
         // Cargar contadores reales dinámicamente
         tvStatFavorites?.text = FavoritesManager.getFavorites(this).size.toString()
@@ -67,6 +69,11 @@ class ProfileActivity : AppCompatActivity() {
                 putExtra("TARGET_FRAGMENT", "FAVORITES")
             })
             finish()
+        }
+
+        // Abrir Mi Lista
+        btnMyList?.setOnClickListener {
+            startActivity(Intent(this, ListActivity::class.java))
         }
 
         bottomNav.selectedItemId = R.id.nav_profile
