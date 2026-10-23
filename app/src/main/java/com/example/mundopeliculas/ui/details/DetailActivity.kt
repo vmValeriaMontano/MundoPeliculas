@@ -14,8 +14,10 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.mundopeliculas.R
 import com.example.mundopeliculas.data.FavoritesManager
+import com.example.mundopeliculas.data.ListsManager
 import com.example.mundopeliculas.data.Movie
 import com.example.mundopeliculas.data.RetrofitClient
+import com.example.mundopeliculas.data.ViewsManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
@@ -51,18 +53,17 @@ class DetailActivity : AppCompatActivity() {
         val tvOverview = findViewById<TextView>(R.id.tvDetailOverview)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val btnFavorite = findViewById<ToggleButton>(R.id.btnFavorite)
+        val btnList = findViewById<ToggleButton>(R.id.btnList)
         val btnWatchTrailer = findViewById<Button>(R.id.btnWatchTrailer)
 
         tvTitle.text = movieTitle
         tvRating.text = "★ ${if (movieRating > 0) String.format("%.1f", movieRating) else "N/A"}"
 
-        // Extraer el año de la fecha (ej: "2016-08-31" -> "2016")
         val year = movieReleaseDate?.takeIf { it.length >= 4 }?.substring(0, 4) ?: "N/A"
         tvYear.text = year
         tvDate.text = "Estreno: ${movieReleaseDate ?: "N/A"}"
         tvOverview.text = movieOverview.ifEmpty { "Sin sinopsis disponible." }
 
-        // Cargar imagen con Glide
         val imageUrl = movieBackdrop ?: moviePoster
         val fullImageUrl = imageUrl?.let { "https://image.tmdb.org/t/p/w780$it" }
 
@@ -85,48 +86,49 @@ class DetailActivity : AppCompatActivity() {
             genreIds = null
         )
 
-        // Estado inicial del botón de favoritos
+        // Estado inicial de Favoritos y Listas
         btnFavorite.isChecked = FavoritesManager.isFavorite(this, movieId)
+        btnList.isChecked = ListsManager.isinList(this, movieId)
 
-        // Lógica combinada: Mantiene tu FavoritesManager local y además guarda/borra en Firestore
+        // Lógica de Favoritos
         btnFavorite.setOnCheckedChangeListener { _, isChecked ->
             val userId = FirebaseAuth.getInstance().currentUser?.uid
             val db = FirebaseFirestore.getInstance()
 
             if (isChecked) {
-                // 1. Guardado local
                 FavoritesManager.addFavorite(this, currentMovie)
                 Toast.makeText(this, "Añadido a favoritos", Toast.LENGTH_SHORT).show()
-
-                // 2. Guardar en Firestore
                 if (userId != null) {
                     val movieMap = hashMapOf(
-                        "id" to movieId,
-                        "title" to movieTitle,
-                        "overview" to movieOverview,
-                        "posterPath" to moviePoster,
-                        "backdropPath" to movieBackdrop,
-                        "voteAverage" to movieRating,
-                        "releaseDate" to movieReleaseDate
+                        "id" to movieId, "title" to movieTitle, "overview" to movieOverview,
+                        "posterPath" to moviePoster, "backdropPath" to movieBackdrop,
+                        "voteAverage" to movieRating, "releaseDate" to movieReleaseDate
                     )
-                    db.collection("users").document(userId).collection("favorites").document(movieId.toString())
-                        .set(movieMap)
+                    db.collection("users").document(userId).collection("favorites").document(movieId.toString()).set(movieMap)
                 }
             } else {
-                // 1. Borrado local
                 FavoritesManager.removeFavorite(this, movieId)
                 Toast.makeText(this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show()
-
-                // 2. Borrar de Firestore
                 if (userId != null) {
-                    db.collection("users").document(userId).collection("favorites").document(movieId.toString())
-                        .delete()
+                    db.collection("users").document(userId).collection("favorites").document(movieId.toString()).delete()
                 }
             }
         }
 
-        // Lógica del botón Ver Tráiler
+        // Lógica de Listas [+]
+        btnList.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                ListsManager.addList(this, currentMovie)
+                Toast.makeText(this, "Añadido a mi lista", Toast.LENGTH_SHORT).show()
+            } else {
+                ListsManager.removeList(this, movieId)
+                Toast.makeText(this, "Eliminado de mi lista", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Lógica del botón Ver Tráiler (Registra la vista)
         btnWatchTrailer.setOnClickListener {
+            ViewsManager.addView(this, currentMovie)
             openTrailer()
         }
     }

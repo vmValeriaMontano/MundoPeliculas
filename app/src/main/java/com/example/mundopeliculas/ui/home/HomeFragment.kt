@@ -18,6 +18,7 @@ import com.example.mundopeliculas.R
 import com.example.mundopeliculas.data.Movie
 import com.example.mundopeliculas.data.MovieAdapter
 import com.example.mundopeliculas.data.RetrofitClient
+import com.example.mundopeliculas.data.ViewsManager
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -142,6 +143,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun openTrailer(movie: Movie) {
+        // Registrar la película como "Vista" al ver su tráiler
+        ViewsManager.addView(requireContext(), movie)
+
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val response = RetrofitClient.api.getMovieVideos(movie.id, RetrofitClient.API_KEY)

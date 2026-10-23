@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="100dp">
 
-        <!-- 1. Imagen principal arriba del todo (Backdrop/Poster) -->
+        <!-- 1. Imagen principal arriba del todo -->
         <ImageView
             android:id="@+id/ivDetailBackdrop"
             android:layout_width="0dp"
@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 2. Barra de acciones DEBAJO de la imagen (Atrás y Corazón de Favorito) -->
+        <!-- 2. Barra de acciones (Atrás, Lista [+] y Favorito) -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="40dp"
@@ -36,6 +36,19 @@
             app:layout_constraintTop_toBottomOf="@+id/ivDetailBackdrop"
             app:tint="#FFFFFF" />
 
+        <!-- Botón de Listas [+] -->
+        <ToggleButton
+            android:id="@+id/btnList"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_list_selector"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintEnd_toStartOf="@+id/btnFavorite"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetailBackdrop" />
+
         <ToggleButton
             android:id="@+id/btnFavorite"
             android:layout_width="40dp"
@@ -48,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivDetailBackdrop" />
 
-        <!-- 3. Título de la película debajo de los botones -->
+        <!-- 3. Título de la película -->
         <TextView
             android:id="@+id/tvDetailTitle"
             android:layout_width="0dp"
@@ -63,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnBack"
             tools:text="Spider-Man: Brand New Day" />
 
-        <!-- 4. Información adicional (Calificación, Año y Fecha) -->
+        <!-- 4. Metadatos -->
         <LinearLayout
             android:id="@+id/layoutMeta"
             android:layout_width="0dp"

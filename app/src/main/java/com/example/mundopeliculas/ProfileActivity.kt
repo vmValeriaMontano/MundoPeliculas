@@ -8,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mundopeliculas.data.FavoritesManager
+import com.example.mundopeliculas.data.ListsManager
+import com.example.mundopeliculas.data.ViewsManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -31,18 +33,21 @@ class ProfileActivity : AppCompatActivity() {
         val tvName = findViewById<TextView>(R.id.tvProfileName)
         val tvEmail = findViewById<TextView>(R.id.tvProfileEmail)
         val tvStatFavorites = findViewById<TextView>(R.id.tvStatFavorites)
+        val tvStatViews = findViewById<TextView>(R.id.tvStatViews)
+        val tvStatLists = findViewById<TextView>(R.id.tvStatLists)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         val btnNotification = findViewById<android.widget.ImageView>(R.id.btnNotification)
         val btnMyActivity = findViewById<LinearLayout>(R.id.btnMyActivity)
         val btnMyFavorites = findViewById<LinearLayout>(R.id.btnMyFavorites)
 
-        // Actualizar contador de favoritos dinámicamente
-        val favoritesCount = FavoritesManager.getFavorites(this).size
-        tvStatFavorites.text = favoritesCount.toString()
+        // Cargar contadores reales dinámicamente
+        tvStatFavorites?.text = FavoritesManager.getFavorites(this).size.toString()
+        tvStatViews?.text = ViewsManager.getViews(this).size.toString()
+        tvStatLists?.text = ListsManager.getLists(this).size.toString()
 
         // Abrir Notificaciones / Actividad
-        btnNotification.setOnClickListener {
+        btnNotification?.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java).apply {
                 putExtra("TARGET_FRAGMENT", "NOTIFICATIONS")
             })
@@ -64,10 +69,8 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Marcar la opción "Perfil" como seleccionada en esta Activity
         bottomNav.selectedItemId = R.id.nav_profile
 
-        // Configurar la navegación inferior
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -91,12 +94,11 @@ class ProfileActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_profile -> true // Ya estamos en Perfil
+                R.id.nav_profile -> true
                 else -> false
             }
         }
 
-        // Obtener datos del usuario desde Firebase
         val currentUser = auth.currentUser
         if (currentUser != null) {
             tvEmail.text = currentUser.email
@@ -110,7 +112,6 @@ class ProfileActivity : AppCompatActivity() {
                 }
         }
 
-        // Cierre de sesión
         btnLogout.setOnClickListener {
             auth.signOut()
             Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
