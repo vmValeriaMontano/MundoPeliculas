@@ -3,6 +3,7 @@ package com.example.mundopeliculas
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class ProfileActivity : AppCompatActivity() {
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         val btnNotification = findViewById<android.widget.ImageView>(R.id.btnNotification)
+        val btnMyFavorites = findViewById<LinearLayout>(R.id.btnMyFavorites) // Botón de Mis Favoritos en la lista
 
         btnNotification.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java).apply {
@@ -39,10 +41,18 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
+        // Al presionar la opción "Mis favoritos" en la lista del perfil, nos lleva a la pestaña Favoritos
+        btnMyFavorites?.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java).apply {
+                putExtra("TARGET_FRAGMENT", "FAVORITES")
+            })
+            finish()
+        }
+
         // Marcar la opción "Perfil" como seleccionada en esta Activity
         bottomNav.selectedItemId = R.id.nav_profile
 
-        // Configurar la navegación clásica con Intent entre Activities
+        // Configurar la navegación con Intent entre Activities
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -59,11 +69,15 @@ class ProfileActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_profile -> true // Ya estamos en Perfil
-                else -> {
-                    Toast.makeText(this, "En construcción", Toast.LENGTH_SHORT).show()
+                R.id.nav_favorites -> { // AHORA SÍ: Redirige a la pantalla de Favoritos
+                    startActivity(Intent(this, MainActivity::class.java).apply {
+                        putExtra("TARGET_FRAGMENT", "FAVORITES")
+                    })
+                    finish()
                     true
                 }
+                R.id.nav_profile -> true // Ya estamos en Perfil
+                else -> false
             }
         }
 

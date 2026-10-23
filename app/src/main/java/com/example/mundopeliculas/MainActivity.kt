@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import com.example.mundopeliculas.ui.favorites.FavoritesFragment
 import com.example.mundopeliculas.ui.home.HomeFragment
-import com.example.mundopeliculas.ui.search.SearchFragment
 import com.example.mundopeliculas.ui.notifications.NotificationsFragment
+import com.example.mundopeliculas.ui.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
                         replace(R.id.fragmentContainer, SearchFragment())
                     }
                     bottomNav.selectedItemId = R.id.nav_search
+                }
+                "FAVORITES" -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fragmentContainer, FavoritesFragment())
+                    }
+                    bottomNav.selectedItemId = R.id.nav_favorites
                 }
                 "NOTIFICATIONS" -> {
                     supportFragmentManager.commit {
@@ -62,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_favorites -> {
                     supportFragmentManager.commit {
-                        replace(R.id.fragmentContainer, com.example.mundopeliculas.ui.favorites.FavoritesFragment())
+                        replace(R.id.fragmentContainer, FavoritesFragment())
                     }
                     true
                 }

@@ -197,10 +197,13 @@
 
             <!-- BOTÓN MIS FAVORITOS -->
             <LinearLayout
+                android:id="@+id/btnMyFavorites"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:background="#162235"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp">
                 <TextView
