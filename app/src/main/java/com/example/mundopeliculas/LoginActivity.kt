@@ -58,7 +58,8 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        val errorMessage = getFriendlyErrorMessage(task.exception?.message)
+                        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
                     }
                 }
         }
@@ -90,7 +91,8 @@ class LoginActivity : AppCompatActivity() {
                     firebaseAuthWithGoogle(account.idToken!!)
                 }
             } catch (e: ApiException) {
-                Toast.makeText(this, "Error en Google Sign-In: ${e.message}", Toast.LENGTH_LONG).show()
+                val errorMessage = getFriendlyErrorMessage(e.message)
+                Toast.makeText(this, "Error en Google: $errorMessage", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -104,8 +106,22 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, "Error al autenticar con Firebase: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    val errorMessage = getFriendlyErrorMessage(task.exception?.message)
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
                 }
             }
+    }
+
+    // Función para traducir los errores técnicos a mensajes amigables
+    private fun getFriendlyErrorMessage(error: String?): String {
+        if (error == null) return "Ocurrió un error desconocido."
+        return when {
+            error.contains("network", ignoreCase = true) -> "Sin conexión a internet. Verifica tu red."
+            error.contains("no user record", ignoreCase = true) || error.contains("user-not-found", ignoreCase = true) -> "No existe una cuenta registrada con este correo."
+            error.contains("password", ignoreCase = true) || error.contains("credential", ignoreCase = true) -> "Contraseña incorrecta o correo inválido."
+            error.contains("email address is already in use", ignoreCase = true) -> "Este correo ya está registrado."
+            error.contains("badly formatted", ignoreCase = true) -> "El formato del correo electrónico no es válido."
+            else -> "Error: $error"
+        }
     }
 }

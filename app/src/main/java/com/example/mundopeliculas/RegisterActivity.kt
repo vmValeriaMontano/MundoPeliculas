@@ -87,7 +87,8 @@ class RegisterActivity : AppCompatActivity() {
                                 }
                         }
                     } else {
-                        Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        val errorMessage = getFriendlyErrorMessage(task.exception?.message)
+                        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
                     }
                 }
         }
@@ -110,7 +111,8 @@ class RegisterActivity : AppCompatActivity() {
                     firebaseAuthWithGoogle(account.idToken!!, account.displayName ?: "Usuario Google", account.email ?: "")
                 }
             } catch (e: ApiException) {
-                Toast.makeText(this, "Error en Google Sign-In: ${e.message}", Toast.LENGTH_LONG).show()
+                val errorMessage = getFriendlyErrorMessage(e.message)
+                Toast.makeText(this, "Error en Google: $errorMessage", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -138,8 +140,21 @@ class RegisterActivity : AppCompatActivity() {
                             }
                     }
                 } else {
-                    Toast.makeText(this, "Error al autenticar con Firebase: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    val errorMessage = getFriendlyErrorMessage(task.exception?.message)
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
                 }
             }
+    }
+
+    // Función para traducir los errores técnicos a mensajes amigables
+    private fun getFriendlyErrorMessage(error: String?): String {
+        if (error == null) return "Ocurrió un error desconocido."
+        return when {
+            error.contains("network", ignoreCase = true) -> "Sin conexión a internet. Verifica tu red."
+            error.contains("email address is already in use", ignoreCase = true) -> "Este correo ya está registrado en otra cuenta."
+            error.contains("weak-password", ignoreCase = true) || error.contains("password", ignoreCase = true) -> "La contraseña es muy débil (mínimo 6 caracteres)."
+            error.contains("badly formatted", ignoreCase = true) -> "El formato del correo electrónico no es válido."
+            else -> "Error: $error"
+        }
     }
 }
