@@ -47,14 +47,14 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_empty_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             } catch (e: ApiException) {
                 val errorMessage = getFriendlyErrorMessage(e.message)
-                Toast.makeText(this, "Error en Google: $errorMessage", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.error_google_prefix, errorMessage), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "¡Inicio de sesión con Google exitoso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.google_login_success), Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
@@ -114,14 +114,14 @@ class LoginActivity : AppCompatActivity() {
 
     // Función para traducir los errores técnicos a mensajes amigables
     private fun getFriendlyErrorMessage(error: String?): String {
-        if (error == null) return "Ocurrió un error desconocido."
+        if (error == null) return getString(R.string.error_unknown)
         return when {
-            error.contains("network", ignoreCase = true) -> "Sin conexión a internet. Verifica tu red."
-            error.contains("no user record", ignoreCase = true) || error.contains("user-not-found", ignoreCase = true) -> "No existe una cuenta registrada con este correo."
-            error.contains("password", ignoreCase = true) || error.contains("credential", ignoreCase = true) -> "Contraseña incorrecta o correo inválido."
-            error.contains("email address is already in use", ignoreCase = true) -> "Este correo ya está registrado."
-            error.contains("badly formatted", ignoreCase = true) -> "El formato del correo electrónico no es válido."
-            else -> "Error: $error"
+            error.contains("network", ignoreCase = true) -> getString(R.string.error_network)
+            error.contains("no user record", ignoreCase = true) || error.contains("user-not-found", ignoreCase = true) -> getString(R.string.error_user_not_found)
+            error.contains("password", ignoreCase = true) || error.contains("credential", ignoreCase = true) -> getString(R.string.error_invalid_credentials)
+            error.contains("email address is already in use", ignoreCase = true) -> getString(R.string.error_email_already_in_use)
+            error.contains("badly formatted", ignoreCase = true) -> getString(R.string.error_invalid_email)
+            else -> getString(R.string.error_prefix, error)
         }
     }
 }

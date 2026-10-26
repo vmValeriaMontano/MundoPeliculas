@@ -42,7 +42,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="12dp"
                 android:text="@string/title_profile"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -64,7 +64,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:text="@string/tvProfileName"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="2dp"
                 android:text="@string/tvProfileEmail"
-                android:textColor="#A0AAB8"
+                android:textColor="@color/gray_text"
                 android:textSize="13sp" />
 
             <!-- TARJETA DE ESTADÍSTICAS -->
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="#121A2A"
+                android:background="@color/stats_bg"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingVertical="12dp">
@@ -99,21 +99,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/favorites"
-                        android:textColor="#E91E63"
+                        android:textColor="@color/pink_accent"
                         android:textSize="12sp" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="24dp"
-                    android:background="#26354A" />
+                    android:background="@color/divider_color" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -126,21 +126,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/views"
-                        android:textColor="#00BCD4"
+                        android:textColor="@color/cyan_accent"
                         android:textSize="12sp" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="24dp"
-                    android:background="#26354A" />
+                    android:background="@color/divider_color" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -153,14 +153,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/lists"
-                        android:textColor="#9C27B0"
+                        android:textColor="@color/purple_accent"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/my_account"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -181,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="#162235"
+                android:background="@color/dark_blue_nav"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
@@ -191,13 +191,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/my_activity"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="›"
-                    android:textColor="#8A99AD"
+                    android:textColor="@color/light_gray_text"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -207,7 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:background="#162235"
+                android:background="@color/dark_blue_nav"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
@@ -217,13 +217,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/my_favorites"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="›"
-                    android:textColor="#8A99AD"
+                    android:textColor="@color/light_gray_text"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -233,7 +233,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:background="#162235"
+                android:background="@color/dark_blue_nav"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
@@ -243,13 +243,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Mi lista"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="›"
-                    android:textColor="#8A99AD"
+                    android:textColor="@color/light_gray_text"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -259,9 +259,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#162235"
+                android:backgroundTint="@color/dark_blue_nav"
                 android:text="@string/btn_logout"
-                android:textColor="#E91E63"
+                android:textColor="@color/pink_accent"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -273,9 +273,9 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#162235"
-        app:itemIconTint="#FFFFFF"
-        app:itemTextColor="#8A99AD"
+        android:background="@color/dark_blue_nav"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/light_gray_text"
         app:menu="@menu/bottom_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -60,12 +60,12 @@ class RegisterActivity : AppCompatActivity() {
             val confirmPassword = etConfirmPassword.text.toString().trim()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_empty_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (password != confirmPassword) {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_password_mismatch), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -81,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
                         if (userId != null) {
                             db.collection("users").document(userId).set(userMap)
                                 .addOnSuccessListener {
-                                    Toast.makeText(this, "¡Registro exitoso!", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
                                     startActivity(Intent(this, MainActivity::class.java))
                                     finishAffinity()
                                 }
@@ -112,7 +112,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             } catch (e: ApiException) {
                 val errorMessage = getFriendlyErrorMessage(e.message)
-                Toast.makeText(this, "Error en Google: $errorMessage", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.error_google_prefix, errorMessage), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -134,7 +134,7 @@ class RegisterActivity : AppCompatActivity() {
                                     )
                                     db.collection("users").document(userId).set(userMap)
                                 }
-                                Toast.makeText(this, "¡Registro con Google exitoso!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, getString(R.string.google_login_success), Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this, MainActivity::class.java))
                                 finishAffinity()
                             }
@@ -148,13 +148,13 @@ class RegisterActivity : AppCompatActivity() {
 
     // Función para traducir los errores técnicos a mensajes amigables
     private fun getFriendlyErrorMessage(error: String?): String {
-        if (error == null) return "Ocurrió un error desconocido."
+        if (error == null) return getString(R.string.error_unknown)
         return when {
-            error.contains("network", ignoreCase = true) -> "Sin conexión a internet. Verifica tu red."
-            error.contains("email address is already in use", ignoreCase = true) -> "Este correo ya está registrado en otra cuenta."
-            error.contains("weak-password", ignoreCase = true) || error.contains("password", ignoreCase = true) -> "La contraseña es muy débil (mínimo 6 caracteres)."
-            error.contains("badly formatted", ignoreCase = true) -> "El formato del correo electrónico no es válido."
-            else -> "Error: $error"
+            error.contains("network", ignoreCase = true) -> getString(R.string.error_network)
+            error.contains("email address is already in use", ignoreCase = true) -> getString(R.string.error_email_already_in_use)
+            error.contains("weak-password", ignoreCase = true) || error.contains("password", ignoreCase = true) -> getString(R.string.error_password_weak)
+            error.contains("badly formatted", ignoreCase = true) -> getString(R.string.error_invalid_email)
+            else -> getString(R.string.error_prefix, error)
         }
     }
 }

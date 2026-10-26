@@ -114,14 +114,14 @@ class ProfileActivity : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists()) {
                         val fullName = document.getString("fullName")
-                        tvName.text = fullName ?: "Usuario"
+                        tvName.text = fullName ?: getString(R.string.default_user_name)
                     }
                 }
         }
 
         btnLogout.setOnClickListener {
             auth.signOut()
-            Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, LoginActivity::class.java))
             finishAffinity()
         }
