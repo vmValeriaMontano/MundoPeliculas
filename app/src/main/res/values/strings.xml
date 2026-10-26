@@ -35,6 +35,7 @@
     <string name="my_favorites">Mis favoritos</string>
     <string name="btn_logout">Cerrar sesión</string>
     <string name="tvProfileName">Cargando...</string>
+    <string name="default_user_name">Usuario</string>
     <string name="tvProfileEmail">correo@ejemplo.com</string>
 
     <!-- Textos HOME -->
@@ -56,10 +57,12 @@
     <string name="filter_description">Filtros</string>
     <string name="go_to_details">Ir a detalles</string>
     <string name="search_recent_title">Búsquedas recientes</string>
+    <string name="recommended_movies_title">Series y películas recomendadas</string>
     <string name="search_results_for">Resultados para \"%1$s\"</string>
 
     <!-- Textos ITEMS -->
     <string name="watch_trailer">VER TRÁILER</string>
+    <string name="synopsis">SINOPSIS</string>
 
     <!-- Textos TOP BAR -->
     <string name="main_title">MUNDO PELÍCULAS</string>
@@ -78,8 +81,18 @@
     <string name="error_empty_fields">Por favor llena todos los campos</string>
     <string name="error_password_mismatch">Las contraseñas no coinciden</string>
     <string name="login_success">¡Bienvenido!</string>
+    <string name="google_login_success">¡Inicio de sesión con Google exitoso!</string>
+    <string name="logout_success">Sesión cerrada</string>
     <string name="register_success">Registro exitoso</string>
     <string name="error_prefix">Error: %1$s</string>
+    <string name="error_google_prefix">Error en Google: %1$s</string>
+    <string name="error_network">Sin conexión a internet. Verifica tu red.</string>
+    <string name="error_user_not_found">No existe una cuenta registrada con este correo.</string>
+    <string name="error_invalid_credentials">Contraseña incorrecta o correo inválido.</string>
+    <string name="error_email_already_in_use">Este correo ya está registrado.</string>
+    <string name="error_invalid_email">El formato del correo electrónico no es válido.</string>
+    <string name="error_password_weak">La contraseña es muy débil (mínimo 6 caracteres).</string>
+    <string name="error_unknown">Ocurrió un error desconocido.</string>
     <string name="movie_info_format">%1$s • %2$s</string>
     <string name="genre_action_adventure">Acción, Aventura</string>
 
@@ -93,7 +106,34 @@
     <string name="fav_removed_toast">%1$s eliminado de favoritos</string>
     <string name="clear_all">Limpiar</string>
     <string name="empty_favorites">Aún no tienes películas favoritas</string>
+    <string name="my_list_title">Mi lista</string>
+    <string name="empty_list_message">No tienes películas en tu lista aún.</string>
     <string name="notifications_title">Notificaciones</string>
+
+    <!-- Géneros -->
+    <string name="genre_action">Acción</string>
+    <string name="genre_adventure">Aventura</string>
+    <string name="genre_animation">Animación</string>
+    <string name="genre_comedy">Comedia</string>
+    <string name="genre_crime">Crimen</string>
+    <string name="genre_documentary">Documental</string>
+    <string name="genre_drama">Drama</string>
+    <string name="genre_family">Familia</string>
+    <string name="genre_fantasy">Fantasía</string>
+    <string name="genre_history">Historia</string>
+    <string name="genre_horror">Terror</string>
+    <string name="genre_music">Música</string>
+    <string name="genre_mystery">Misterio</string>
+    <string name="genre_romance">Romance</string>
+    <string name="genre_science_fiction">Ciencia ficción</string>
+    <string name="genre_tv_movie">Película de TV</string>
+    <string name="genre_thriller">Suspense</string>
+    <string name="genre_war">Bélica</string>
+    <string name="genre_western">Western</string>
+    <string name="genre_default">Cine</string>
+    <string name="genre_others">Otros</string>
+    <string name="rating_na">N/A</string>
+    <string name="tmdb_image_url_w342">https://image.tmdb.org/t/p/w342</string>
 
     <string-array name="splash_phrases">
         <item>Preparando las palomitas…</item>

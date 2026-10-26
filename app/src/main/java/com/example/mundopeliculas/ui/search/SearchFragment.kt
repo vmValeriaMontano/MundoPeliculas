@@ -20,6 +20,7 @@ import com.example.mundopeliculas.data.RetrofitClient
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
@@ -107,13 +108,16 @@ class SearchFragment : Fragment() {
             }
         }
 
-        // Volver a recomendaciones si se limpia el buscador
+        // Búsqueda en tiempo real
         etSearchMovie.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.isNullOrEmpty()) {
+                val query = s?.toString()?.trim() ?: ""
+                if (query.isEmpty()) {
                     tvSearchStatus.text = getString(R.string.search_status_initial)
                     loadRecommendations()
+                } else if (query.length >= 2) {
+                    searchMovies(query)
                 }
             }
             override fun afterTextChanged(s: Editable?) {}
@@ -133,8 +137,8 @@ class SearchFragment : Fragment() {
         searchJob?.cancel()
 
         searchJob = viewLifecycleOwner.lifecycleScope.launch {
+            delay(400) // Espera 400ms antes de llamar a la API
             tvSearchStatus.text = getString(R.string.search_loading)
-            movieAdapter.submitList(emptyList())
 
             try {
                 val response = RetrofitClient.api.searchMovies(
