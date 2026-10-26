@@ -41,9 +41,10 @@ class FeaturedMovieAdapter(
         holder.title.text = movie.title
         
         // Lógica de Calificación Precisa y Estrellas Premium (Anti-Quemado)
+        val context = holder.itemView.context
         val ratingStars = movie.voteAverage / 2.0
-        val goldColor = Color.parseColor("#FFC107") // Oro Premium
-        val darkGray = Color.parseColor("#424242")  // Gris para vacías
+        val goldColor = androidx.core.content.ContextCompat.getColor(context, R.color.gold) // Oro Premium
+        val darkGray = androidx.core.content.ContextCompat.getColor(context, R.color.dark_gray)  // Gris para vacías
 
         holder.stars.forEachIndexed { index, starView ->
             val starLevel = index + 1

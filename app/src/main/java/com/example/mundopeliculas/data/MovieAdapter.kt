@@ -1,13 +1,11 @@
 package com.example.mundopeliculas.data
 
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -45,16 +43,16 @@ class MovieAdapter(
         val context = holder.itemView.context
 
         holder.title.text = movie.title
-        holder.rating.text = if (movie.voteAverage > 0) String.format("%.1f", movie.voteAverage) else "N/A"
+        holder.rating.text = if (movie.voteAverage > 0) String.format("%.1f", movie.voteAverage) else context.getString(R.string.rating_na)
         holder.rank.text = (position + 1).toString()
-        holder.genre.text = movie.genreIds?.firstOrNull()?.let { getGenreName(it) } ?: "Cine"
+        holder.genre.text = movie.genreIds?.firstOrNull()?.let { context.getString(getGenreResId(it)) } ?: context.getString(R.string.genre_default)
 
         // Calificación simple con estrellas
         val ratingValue = movie.voteAverage
         holder.stars.forEachIndexed { index, starView ->
             if (ratingValue >= (index + 1) * 2) {
                 starView.setImageResource(android.R.drawable.btn_star_big_on)
-                starView.setColorFilter(Color.parseColor("#FFC107"), PorterDuff.Mode.SRC_IN)
+                starView.setColorFilter(androidx.core.content.ContextCompat.getColor(context, R.color.gold), PorterDuff.Mode.SRC_IN)
             } else {
                 starView.setImageResource(android.R.drawable.btn_star_big_off)
                 starView.clearColorFilter()
@@ -68,7 +66,7 @@ class MovieAdapter(
         params.width = (progressPercent * density).toInt()
         holder.progressFill.layoutParams = params
 
-        val posterUrl = movie.posterPath?.let { "https://image.tmdb.org/t/p/w342$it" }
+        val posterUrl = movie.posterPath?.let { "${context.getString(R.string.tmdb_image_url_w342)}$it" }
 
         Glide.with(holder.poster)
             .load(posterUrl)
@@ -91,28 +89,28 @@ class MovieAdapter(
         }
     }
 
-    private fun getGenreName(id: Int): String {
+    private fun getGenreResId(id: Int): Int {
         return when(id) {
-            28 -> "Acción"
-            12 -> "Aventura"
-            16 -> "Animación"
-            35 -> "Comedia"
-            80 -> "Crimen"
-            99 -> "Documental"
-            18 -> "Drama"
-            10751 -> "Familia"
-            14 -> "Fantasía"
-            36 -> "Historia"
-            27 -> "Terror"
-            10402 -> "Música"
-            9648 -> "Misterio"
-            10749 -> "Romance"
-            878 -> "Ciencia ficción"
-            10770 -> "Película de TV"
-            53 -> "Suspense"
-            10752 -> "Bélica"
-            37 -> "Western"
-            else -> "Otros"
+            28 -> R.string.genre_action
+            12 -> R.string.genre_adventure
+            16 -> R.string.genre_animation
+            35 -> R.string.genre_comedy
+            80 -> R.string.genre_crime
+            99 -> R.string.genre_documentary
+            18 -> R.string.genre_drama
+            10751 -> R.string.genre_family
+            14 -> R.string.genre_fantasy
+            36 -> R.string.genre_history
+            27 -> R.string.genre_horror
+            10402 -> R.string.genre_music
+            9648 -> R.string.genre_mystery
+            10749 -> R.string.genre_romance
+            878 -> R.string.genre_science_fiction
+            10770 -> R.string.genre_tv_movie
+            53 -> R.string.genre_thriller
+            10752 -> R.string.genre_war
+            37 -> R.string.genre_western
+            else -> R.string.genre_others
         }
     }
 

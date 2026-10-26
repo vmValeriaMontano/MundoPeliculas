@@ -2,6 +2,8 @@ package com.example.mundopeliculas.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -29,6 +31,21 @@ object FavoritesManager {
         if (!favorites.any { it.id == movie.id }) {
             favorites.add(movie)
             saveFavorites(context, favorites)
+
+            // Sincronizar con Firestore (La Nube)
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            if (userId != null) {
+                val db = FirebaseFirestore.getInstance()
+                val movieMap = hashMapOf(
+                    "id" to movie.id,
+                    "title" to movie.title,
+                    "overview" to movie.overview,
+                    "posterPath" to movie.posterPath,
+                    "voteAverage" to movie.voteAverage
+                )
+                db.collection("users").document(userId).collection("favorites")
+                    .document(movie.id.toString()).set(movieMap)
+            }
         }
     }
 
@@ -37,6 +54,14 @@ object FavoritesManager {
         val removed = favorites.removeAll { it.id == movieId }
         if (removed) {
             saveFavorites(context, favorites)
+
+            // Borrar de Firestore (La Nube)
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            if (userId != null) {
+                val db = FirebaseFirestore.getInstance()
+                db.collection("users").document(userId).collection("favorites")
+                    .document(movieId.toString()).delete()
+            }
         }
     }
 
