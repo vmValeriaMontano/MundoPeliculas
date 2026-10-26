@@ -42,7 +42,7 @@
                 android:id="@+id/tvSearchMovieTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:maxLines="1"
@@ -52,7 +52,7 @@
                 android:id="@+id/tvMovieMeta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#A0AAB8"
+                android:textColor="@color/gray_text"
                 android:textSize="12sp"
                 android:layout_marginTop="2dp" />
 
@@ -73,7 +73,7 @@
                     android:id="@+id/tvMovieRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:layout_marginStart="4dp" />
@@ -85,7 +85,7 @@
                     android:layout_height="22dp"
                     android:layout_marginStart="16dp"
                     android:src="@drawable/ic_heart_empty"
-                    android:contentDescription="Favorito"
+                    android:contentDescription="@string/favorites"
                     android:clickable="true"
                     android:focusable="true"
                     app:tint="@color/white" />
@@ -100,7 +100,7 @@
             android:layout_marginEnd="8dp"
             android:src="@android:drawable/ic_media_play"
             android:padding="10dp"
-            app:tint="#FFFFFF"
+            app:tint="@color/white"
             android:background="@drawable/bg_rating" />
 
     </LinearLayout>

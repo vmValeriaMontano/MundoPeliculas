@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/my_favorites"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingHorizontal="16dp"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/empty_favorites"
-        android:textColor="#A0AAB8"
+        android:textColor="@color/gray_text"
         android:textSize="16sp"
         android:layout_marginTop="100dp"
         android:visibility="gone" />

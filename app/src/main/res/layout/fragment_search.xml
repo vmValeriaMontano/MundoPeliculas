@@ -10,8 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buscar"
-        android:textColor="#FFFFFF"
+        android:text="@string/menu_search"
+        android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingHorizontal="16dp"
@@ -51,9 +51,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:hint="Buscar películas..."
-                android:textColorHint="#A0AAB8"
-                android:textColor="#FFFFFF"
+                android:hint="@string/search_hint"
+                android:textColorHint="@color/gray_text"
+                android:textColor="@color/white"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:textSize="16sp"
@@ -97,8 +97,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Búsquedas recientes"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/search_recent_title"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:paddingHorizontal="16dp"
@@ -118,12 +118,12 @@
                 android:id="@+id/tvSearchStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:paddingHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Series y películas recomendadas" />
+                android:text="@string/recommended_movies_title" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSearchResults"

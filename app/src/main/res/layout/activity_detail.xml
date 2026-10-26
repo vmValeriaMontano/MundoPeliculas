@@ -34,7 +34,7 @@
             android:src="@android:drawable/ic_menu_revert"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivDetailBackdrop"
-            app:tint="#FFFFFF" />
+            app:tint="@color/white" />
 
         <!-- Botón de Listas [+] -->
         <ToggleButton
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="12dp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
                 android:id="@+id/tvDetailRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFC107"
+                android:textColor="@color/gold"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 tools:text="★ 8.5" />
@@ -103,13 +103,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="|"
-                android:textColor="#A0AAB8" />
+                android:textColor="@color/gray_text" />
 
             <TextView
                 android:id="@+id/tvDetailYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#A0AAB8"
+                android:textColor="@color/gray_text"
                 android:textSize="14sp"
                 tools:text="2026" />
 
@@ -118,13 +118,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="|"
-                android:textColor="#A0AAB8" />
+                android:textColor="@color/gray_text" />
 
             <TextView
                 android:id="@+id/tvDetailDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#A0AAB8"
+                android:textColor="@color/gray_text"
                 android:textSize="14sp"
                 tools:text="Estreno: 2026-07-29" />
         </LinearLayout>
@@ -136,9 +136,9 @@
             android:layout_height="50dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#E91E63"
-            android:text="VER TRÁILER"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/pink_accent"
+            android:text="@string/watch_trailer"
+            android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,8 +152,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="24dp"
-            android:text="SINOPSIS"
-            android:textColor="#FFFFFF"
+            android:text="@string/synopsis"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="50dp"
             android:lineSpacingExtra="5dp"
-            android:textColor="#D0D8E8"
+            android:textColor="@color/overview_text_color"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -13,7 +13,7 @@
         android:id="@+id/topBarList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#09111E"
+        android:background="@color/top_bar_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
@@ -30,14 +30,14 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Volver"
             android:src="@android:drawable/ic_menu_revert"
-            app:tint="#FFFFFF" />
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Mi lista"
-            android:textColor="#FFFFFF"
+            android:text="@string/my_list_title"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -59,8 +59,8 @@
         android:id="@+id/tvEmptyList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No tienes películas en tu lista aún."
-        android:textColor="#A0AAB8"
+        android:text="@string/empty_list_message"
+        android:textColor="@color/gray_text"
         android:textSize="16sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

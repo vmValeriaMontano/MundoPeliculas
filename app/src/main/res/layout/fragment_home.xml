@@ -26,7 +26,7 @@
             android:paddingHorizontal="20dp"
             android:layout_marginTop="20dp"
             android:text="@string/welcome"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
             android:layout_marginTop="4dp"
             android:paddingHorizontal="20dp"
             android:text="@string/tvSubtitle"
-            android:textColor="#A0AAB8"
+            android:textColor="@color/gray_text"
             android:textSize="14sp" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_marginTop="32dp"
             android:paddingHorizontal="20dp"
             android:text="@string/trending"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:background="#09111E"
+            android:background="@color/top_bar_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingVertical="12dp"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/popular"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/view_all"
-                android:textColor="#FF00FF"
+                android:textColor="@color/progress_fill"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:clickable="true"

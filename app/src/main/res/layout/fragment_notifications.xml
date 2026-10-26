@@ -22,7 +22,7 @@
             android:clickable="true"
             android:focusable="true"
             android:src="@android:drawable/ic_menu_revert"
-            app:tint="#FFFFFF"
+            app:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless" />
 
         <TextView
@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Notificaciones"
-            android:textColor="#FFFFFF"
+            android:text="@string/notifications_title"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
             android:id="@+id/tvClearAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Limpiar"
+            android:text="@string/clear_all"
             android:textColor="@color/accent_blue"
             android:textSize="14sp"
             android:textStyle="bold"
